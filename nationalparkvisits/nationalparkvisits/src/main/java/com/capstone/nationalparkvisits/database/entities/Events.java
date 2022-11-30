@@ -1,6 +1,5 @@
-package com.capstone.nationalparkvisits.database.entities;
 
-import java.util.Date;
+package com.capstone.nationalparkvisits.database.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import org.hibernate.annotations.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +16,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "visits")
+@Table(name = "events")
 @Getter
 @Setter
 @ToString
@@ -31,12 +29,10 @@ public class Events {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name="visits_id")
-	private Integer visitsId;
-	
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="description", columnDefinition = "TEXT")
+	@Column(name="description" , length = 65535, columnDefinition="TEXT")
+	@Type(type="text")
 	private String description;
 }

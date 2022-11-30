@@ -1,3 +1,4 @@
+
 package com.capstone.nationalparkvisits.database.entities;
 
 import java.util.Date;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,7 +40,8 @@ public class Visits {
 	@Column(name="natparks_id")
 	private Integer natparksId;
 	
-	@Column(name="description", columnDefinition = "TEXT")
+	@Column(name="description" , length = 65535, columnDefinition="TEXT")
+	@Type(type="text")
 	private String description;
 	
 	@Temporal(TemporalType.DATE)

@@ -1,3 +1,4 @@
+
 package com.capstone.nationalparkvisits.database.entities;
 
 import javax.persistence.Column;
@@ -6,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,7 +36,8 @@ public class Users {
 	@Column(name="lastname")
 	private String lastname;
 	
-	@Column(name="description", columnDefinition = "TEXT")
+	@Column(name="description" , length = 65535, columnDefinition="TEXT")
+	@Type(type="text")
 	private String description;
 	
 	@Column(name="username")
@@ -44,7 +48,4 @@ public class Users {
 	
 	@Column(name="email")
 	private String email;
-	
-	@Column(name="age")
-	private Integer age;
 }
