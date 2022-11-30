@@ -1,13 +1,17 @@
 
 package com.capstone.nationalparkvisits.database.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,12 +38,6 @@ public class Visits {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name="users_id")
-	private Integer usersId;
-	
-	@Column(name="natparks_id")
-	private Integer natparksId;
-	
 	@Column(name="description" , length = 65535, columnDefinition="TEXT")
 	@Type(type="text")
 	private String description;
@@ -51,4 +49,8 @@ public class Visits {
 	@Temporal(TemporalType.DATE)
 	@Column(name="end")
 	private Date end;
+	
+	@OneToMany
+	@JoinColumn(name="visits_id")
+	private List<Events> events = new ArrayList<Events>();
 }
