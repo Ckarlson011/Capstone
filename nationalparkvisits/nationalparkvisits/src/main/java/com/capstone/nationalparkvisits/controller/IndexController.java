@@ -20,23 +20,23 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class IndexController {
-	
+
 	@Autowired
 	EventsDAO eventsDAO;
-	
+
 	@Autowired
 	NatparkDAO natparkDAO;
-	
+
 	@Autowired
 	UserRolesDAO userRolesDAO;
-	
+
 	@Autowired
 	UsersDAO usersDAO;
-	
+
 	@Autowired
 	VisitsDAO visitsDAO;
 
-	@RequestMapping(value = {"/", "/index", "/index.html"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/index"}, method = RequestMethod.GET)
 	public ModelAndView slash() {
 		log.info("slash() method called");
 		ModelAndView response = new ModelAndView();
@@ -44,4 +44,11 @@ public class IndexController {
 		return response;
 	}
 	
+	@RequestMapping(value = {"/signup"}, method = RequestMethod.GET)
+	public ModelAndView signup() {
+		log.info("signup() method called");
+		ModelAndView response = new ModelAndView();
+		response.setViewName("signup");
+		return response;
+	}
 }
