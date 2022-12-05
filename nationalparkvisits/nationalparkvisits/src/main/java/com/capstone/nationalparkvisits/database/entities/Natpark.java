@@ -30,7 +30,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Natpark {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 
@@ -44,7 +44,4 @@ public class Natpark {
 	@Type(type="text")
 	private String description;
 	
-	@OneToMany
-	@JoinColumn(name = "natpark_id")
-	private List<Visits> visits = new ArrayList<Visits>();
 }

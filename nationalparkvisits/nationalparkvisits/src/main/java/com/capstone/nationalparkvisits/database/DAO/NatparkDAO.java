@@ -1,4 +1,3 @@
-/*
 package com.capstone.nationalparkvisits.database.DAO;
 
 import java.util.List;
@@ -14,4 +13,3 @@ public interface NatparkDAO extends JpaRepository<Natpark, Long>{
 	public List<Natpark> findByName(String name);
 	public List<Natpark> findByState(String state);
 }
-*/

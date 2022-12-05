@@ -1,4 +1,3 @@
-/*
 package com.capstone.nationalparkvisits.database.DAO;
 
 import java.util.List;
@@ -16,4 +15,3 @@ public interface UsersDAO extends JpaRepository<Users, Long>{
 	public List<Users> findByemail(String email);
 	public List<Users> findByUsername(String username);
 }
-*/

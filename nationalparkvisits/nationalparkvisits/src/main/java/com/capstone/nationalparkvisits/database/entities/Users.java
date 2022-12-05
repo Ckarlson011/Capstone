@@ -31,7 +31,7 @@ import lombok.ToString;
 public class Users {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 	
@@ -53,8 +53,4 @@ public class Users {
 	
 	@Column(name="email")
 	private String email;
-	
-	@OneToMany
-	@JoinColumn(name="users_id")
-	private List<Visits> visits = new ArrayList<Visits>();
 }

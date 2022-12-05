@@ -34,9 +34,15 @@ import lombok.ToString;
 public class Visits {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
+	
+	@Column(name = "users_id")
+	private Integer usersId;
+	
+	@Column(name = "natparks_id")
+	private Integer natparksId;
 	
 	@Column(name="description" , length = 65535, columnDefinition="TEXT")
 	@Type(type="text")
@@ -49,8 +55,4 @@ public class Visits {
 	@Temporal(TemporalType.DATE)
 	@Column(name="end")
 	private Date end;
-	
-	@OneToMany
-	@JoinColumn(name="visits_id")
-	private List<Events> events = new ArrayList<Events>();
 }

@@ -1,4 +1,3 @@
-/*
 package com.capstone.nationalparkvisits.database.DAO;
 
 import java.util.List;
@@ -15,4 +14,3 @@ public interface EventsDAO extends JpaRepository<Events, Long>{
 	public List<Events> findByVisitsId(Integer id);
 	public List<Events> findByName(String name);
 }
-*/

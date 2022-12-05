@@ -1,4 +1,3 @@
-/*
 package com.capstone.nationalparkvisits.database.DAO;
 
 import java.util.Date;
@@ -17,4 +16,3 @@ public interface VisitsDAO extends JpaRepository<Visits, Long>{
 	public List<Visits> findByStart(Date start);
 	public List<Visits> findByEnd(Date end);
 }
-*/

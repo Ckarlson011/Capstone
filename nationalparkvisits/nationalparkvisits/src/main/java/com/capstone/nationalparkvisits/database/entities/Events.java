@@ -25,9 +25,12 @@ import lombok.ToString;
 public class Events {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
+	
+	@Column(name="visits_id")
+	private Integer visitsId;
 	
 	@Column(name="name")
 	private String name;
