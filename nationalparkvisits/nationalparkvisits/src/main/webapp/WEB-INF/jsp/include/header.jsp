@@ -8,3 +8,12 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</head>
 	<body>
+		<nav class="navbar navbar-light bg-light">
+			<div class="row">
+			  <a href="index" class="col-4 navbar-brand">Home</a>
+			  <a href="signin" class="col-4 navbar-brand">Signin</a>
+			  <a href="signup" class="col-4 navbar-brand">Signup</a>
+			  <a href="myvisits" class="col-4 navbar-brand">My Visits</a>
+			  <a href="natparks" class="col-4 navbar-brand">National Parks</a>
+			</div>
+		  </nav>
