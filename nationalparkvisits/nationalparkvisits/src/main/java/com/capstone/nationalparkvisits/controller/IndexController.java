@@ -35,10 +35,7 @@ public class IndexController {
 	
 	@Autowired
 	VisitsDAO visitsDAO;
-	
-	@Value("${spring.datasource.url}")
-	private String variable;
-	
+
 	@RequestMapping(value = {"/", "/index", "/index.html"}, method = RequestMethod.GET)
 	public ModelAndView slash() {
 		log.info("slash() method called");

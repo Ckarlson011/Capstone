@@ -1,32 +1,19 @@
-package com.teksystems.springboot.config;
+package com.capstone.nationalparkvisits.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import com.teksystems.springboot.security.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfig {
-	
-//	@Bean
-//    public WebSecurityCustomizer webSecurityCustomizer() {
-//        return (web) -> web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
-//    }
-	
+
 	@Bean
-	 public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	 public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {//TODO THIS NEEDS TO BE UPDATED
 		http
 			.csrf().disable()
 	        .authorizeRequests()
@@ -41,7 +28,7 @@ public class SecurityConfig {
 	        	// this is the URL to the login page
 	        	// the request method for this is implemented in the login controller
 	        	// to display the login.jsp view
-	            .loginPage("/user/login")
+	            .loginPage("/login")
 	            // this is the URL that the login page will submit to with a action="/user/login" method="POST"
 	            .loginProcessingUrl("/user/loginpost")
 	            // this URL is where spring security will send the user IF they have not requested a secure URL
@@ -52,22 +39,10 @@ public class SecurityConfig {
 	        .logout()
 	            .invalidateHttpSession(true)
 	            // this is the URL to log a user out
-	            .logoutUrl("/user/logout")
+	            .logoutUrl("/logout")
 	            // this is the URL to send the browser to after the user has logged out
 	            .logoutSuccessUrl("/index");
 		
 		return http.build();
 	}
-	 
-	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
-		return authConfig.getAuthenticationManager();
-	}
-	
-	// this is boiler plate code that can be copied and pasted into your security configuration
-	@Bean(name="passwordEncoder")
-	public PasswordEncoder getPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
 }
