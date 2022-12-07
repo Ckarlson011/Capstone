@@ -2,9 +2,13 @@ package com.capstone.nationalparkvisits.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -18,7 +22,7 @@ public class SecurityConfig {
 			.csrf().disable()
 	        .authorizeRequests()
 	        	// this line of code specifies all URLs that do not need authentication to view
-	        	.antMatchers("/", "/index", "/signup").permitAll()
+	        	.antMatchers("/", "/index", "/signup", "admin/admin", "/admin/admintest", "/signin").permitAll()
 	        	// this line of code tells spring security that all URLs can only be accessed if the user
 	        	// is authenticated.   This is authetnication only and does not care about authorization.
 	        	// authorization must be implement in the controller to limit by user role
@@ -44,5 +48,15 @@ public class SecurityConfig {
 	            .logoutSuccessUrl("/index");
 		
 		return http.build();
+	}
+	
+	@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+		return authConfig.getAuthenticationManager();
+	}
+	
+	@Bean(name="passwordEncoder")
+	public PasswordEncoder getPasswordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 }

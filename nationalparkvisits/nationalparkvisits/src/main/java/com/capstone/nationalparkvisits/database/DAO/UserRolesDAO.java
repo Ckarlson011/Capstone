@@ -1,9 +1,15 @@
 package com.capstone.nationalparkvisits.database.DAO;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.capstone.nationalparkvisits.database.entities.Visits;
+import com.capstone.nationalparkvisits.database.entities.UserRoles;
 
-public interface UserRolesDAO extends JpaRepository<Visits, Long>{
-
+@Repository
+public interface UserRolesDAO extends JpaRepository<UserRoles, Long>{
+	public UserRoles findById(Integer id);
+	public UserRoles findByUserId(Integer userId);
+	public List<UserRoles> findByRoleName(String roles);
 }
