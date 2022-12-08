@@ -11,17 +11,17 @@
             <p class="mb-0" style="color:red">${error.getDefaultMessage()}</p>
         </c:forEach>
     </c:if>
-	<form action="/user/createuser" method="POST">
+	<form action="/signup/createuser" method="POST">
 		<div class="row">
 			<div class="mb-3 col-6">
                 <label for="firstName" class="form-label">First Name</label>
-                <input type="text" value="${form.firstname}" name="firstName" class="form-control" id="firstName" aria-describedby="firstNameHelp">
+                <input type="text" value="${form.firstname}" name="firstname" class="form-control" id="firstName" aria-describedby="firstNameHelp">
                 <div id="fristNameHelp" class="form-text">Please give us your first name</div>
             </div>
 
             <div class="mb-3 col-6">
                 <label for="lastName" class="form-label">Last Name</label>
-                <input type="text" value="${form.lastname}" name="lastName" class="form-control" id="lastName" aria-describedby="lastNameHelp">
+                <input type="text" value="${form.lastname}" name="lastname" class="form-control" id="lastName" aria-describedby="lastNameHelp">
                 <div id="lastNameHelp" class="form-text">Please give us your last name</div>
             </div>
 		</div>

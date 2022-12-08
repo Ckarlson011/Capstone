@@ -22,7 +22,7 @@ public class SecurityConfig {
 			.csrf().disable()
 	        .authorizeRequests()
 	        	// this line of code specifies all URLs that do not need authentication to view
-	        	.antMatchers("/", "/index", "/signup", "admin/admin", "/admin/admintest", "/signin").permitAll()
+	        	.antMatchers("/", "/index", "/signup/**", "admin/admin", "/admin/admintest", "/signin", "/signinpost", "/logout").permitAll()
 	        	// this line of code tells spring security that all URLs can only be accessed if the user
 	        	// is authenticated.   This is authetnication only and does not care about authorization.
 	        	// authorization must be implement in the controller to limit by user role
@@ -34,7 +34,7 @@ public class SecurityConfig {
 	        	// to display the login.jsp view
 	            .loginPage("/signin")
 	            // this is the URL that the login page will submit to with a action="/user/login" method="POST"
-	            .loginProcessingUrl("/signin")
+	            .loginProcessingUrl("/signinpost")
 	            // this URL is where spring security will send the user IF they have not requested a secure URL
 	            // if they have requested a secure URL spring security will ignore this and send them to the 
 	            // secured url they requested
