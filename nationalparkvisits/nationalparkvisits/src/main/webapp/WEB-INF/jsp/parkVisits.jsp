@@ -2,6 +2,6 @@
 
 <jsp:include page="include/header.jsp" />
 
-<!--TODO add in visits from signedin user-->
+<!--TODO add in visits from selected park-->
 
 <jsp:include page="include/footer.jsp" />
