@@ -45,7 +45,7 @@ public class SecurityConfig {
 	            // this is the URL to log a user out
 	            .logoutUrl("/logout")
 	            // this is the URL to send the browser to after the user has logged out
-	            .logoutSuccessUrl("/index");
+	            .logoutSuccessUrl("/");
 		
 		return http.build();
 	}

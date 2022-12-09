@@ -45,31 +45,31 @@ public class IndexController {
 
 	@Autowired
 	VisitsDAO visitsDAO;
-	
+
 	@Autowired
 	private AuthenticatedUserService authService;
-	
+
 	@Autowired
 	@Qualifier("passwordEncoder")
 	private PasswordEncoder passwordEncoder;
 
-	@RequestMapping(value = { "/", "/index"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public ModelAndView slash() {
 		log.debug("slash() method called");
 		ModelAndView response = new ModelAndView();
 		response.setViewName("index");
 		return response;
 	}
-	
-	@RequestMapping(value = {"/signup"}, method = RequestMethod.GET)
+
+	@RequestMapping(value = { "/signup" }, method = RequestMethod.GET)
 	public ModelAndView signup() {
 		log.debug("signup() method called");
 		ModelAndView response = new ModelAndView();
 		response.setViewName("signup");
 		return response;
 	}
-	
-	@RequestMapping(value = {"/signup/createuser"}, method = RequestMethod.POST)
+
+	@RequestMapping(value = { "/signup/createuser" }, method = RequestMethod.POST)
 	public ModelAndView signupCreateUser(@Valid SignupForm form, BindingResult bindingResult) {
 		ModelAndView response = new ModelAndView();
 		response.setViewName("signup");
@@ -77,7 +77,7 @@ public class IndexController {
 		for (ObjectError e : bindingResult.getAllErrors()) {
 			log.debug(e.getObjectName() + " : " + e.getDefaultMessage());
 		}
-		if ( ! bindingResult.hasErrors()) {
+		if (!bindingResult.hasErrors()) {
 			Users user = new Users();
 			String encodedPassword = passwordEncoder.encode(form.getPassword());
 			user.setPassword(encodedPassword);
@@ -87,8 +87,7 @@ public class IndexController {
 			user.setEmail(form.getEmail());
 			if (!(form.getDescription() == null)) {
 				user.setDescription(form.getDescription());
-			}
-			else {
+			} else {
 				user.setDescription("");
 			}
 			usersDAO.save(user);
@@ -96,41 +95,34 @@ public class IndexController {
 			ur.setRoleName("USER");
 			ur.setUserId(user.getId());
 			userRolesDAO.save(ur);
-			
+
 			authService.changeLoggedInUsername(user.getUsername(), form.getPassword());
-		}
-		else {
+		} else {
 			response.addObject("bindingResult", bindingResult);
 			response.addObject("form", form);
 		}
-		
+
 		return response;
 	}
 
-	@RequestMapping(value = {"/signin"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/signin" }, method = RequestMethod.GET)
 	public ModelAndView signinPage() {
 		log.debug("sighin page method called");
 		ModelAndView response = new ModelAndView();
 		response.setViewName("signin");
 		return response;
 	}
-	
-	@RequestMapping(value = {"/signin"}, method = RequestMethod.POST)
-	public ModelAndView signin(@Valid SignupForm form, BindingResult bindingResult) {
-		ModelAndView response = new ModelAndView();
-		log.debug("Signing in to user");
-		String encodedPassword = passwordEncoder.encode(form.getPassword());
-		Users user = new Users();
-		user = usersDAO.findByUsername(form.getUsername());
-		if (encodedPassword == user.getPassword()) {
-			authService.changeLoggedInUsername(user.getUsername(), form.getPassword());
-			response.setViewName("home");
-		}
-		else {
-			response.setViewName("signin");
-		}
-		
-		return response;
-	}
-}
 
+//	@RequestMapping(value = { "/signin" }, method = RequestMethod.POST)
+//	public ModelAndView signin(@Valid SignupForm form, BindingResult bindingResult) {
+//		ModelAndView response = new ModelAndView();
+//		log.debug("Signing in to user");
+//		String encodedPassword = passwordEncoder.encode(form.getPassword());
+//		Users user = new Users();
+//		user = usersDAO.findByUsername(form.getUsername());
+//		authService.changeLoggedInUsername(user.getUsername(), form.getPassword());
+//		response.setViewName("home");
+//
+//		return response;
+//	}
+}

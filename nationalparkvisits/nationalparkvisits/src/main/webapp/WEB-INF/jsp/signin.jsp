@@ -6,7 +6,7 @@
     <div class="col-6">
       <div class="card-body py-5 px-md-5">
 
-        <form action="/signin" method="POST">
+        <form action="/signinpost" method="POST">
           <!-- username input -->
           <div class="form-outline mb-4">
             <input type="text" id="username-login" class="form-control" name="username"/>
@@ -34,9 +34,11 @@
 
       </div>
     </div>
+<!--
     <div class="col-6">
       <img src="images/pexels-eberhard-grossgasteiger-572897.jpg" alt="Mountain against background of night scky with stars" style="max-width: 100%;height: auto;">
     </div>
-  </div>
+-->
+</div>
 
 <jsp:include page="include/footer.jsp" />
