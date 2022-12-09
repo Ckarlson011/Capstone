@@ -108,11 +108,17 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = {"/signin"}, method = RequestMethod.GET)
-	public ModelAndView signin() {
-		log.debug("sighin method called");
+	public ModelAndView signinPage() {
+		log.debug("sighin page method called");
 		ModelAndView response = new ModelAndView();
 		response.setViewName("signin");
 		return response;
+	}
+	
+	@RequestMapping(value = {"/signin"}, method = RequestMethod.POST)
+	public ModelAndView signin(@Valid SignupForm form, BindingResult bindingResult) {
+		ModelAndView response = new ModelAndView();
+		log.debug("Signing in to user");
 	}
 }
 
