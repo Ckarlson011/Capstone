@@ -119,6 +119,18 @@ public class IndexController {
 	public ModelAndView signin(@Valid SignupForm form, BindingResult bindingResult) {
 		ModelAndView response = new ModelAndView();
 		log.debug("Signing in to user");
+		String encodedPassword = passwordEncoder.encode(form.getPassword());
+		Users user = new Users();
+		user = usersDAO.findByUsername(form.getUsername());
+		if (encodedPassword == user.getPassword()) {
+			authService.changeLoggedInUsername(user.getUsername(), form.getPassword());
+			response.setViewName("home");
+		}
+		else {
+			response.setViewName("signin");
+		}
+		
+		return response;
 	}
 }
 
