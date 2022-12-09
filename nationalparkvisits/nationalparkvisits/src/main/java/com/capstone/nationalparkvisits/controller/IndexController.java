@@ -1,5 +1,8 @@
 package com.capstone.nationalparkvisits.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -20,6 +23,7 @@ import com.capstone.nationalparkvisits.database.DAO.NatparkDAO;
 import com.capstone.nationalparkvisits.database.DAO.UserRolesDAO;
 import com.capstone.nationalparkvisits.database.DAO.UsersDAO;
 import com.capstone.nationalparkvisits.database.DAO.VisitsDAO;
+import com.capstone.nationalparkvisits.database.entities.Natpark;
 import com.capstone.nationalparkvisits.database.entities.UserRoles;
 import com.capstone.nationalparkvisits.database.entities.Users;
 import com.capstone.nationalparkvisits.form.SignupForm;
@@ -112,17 +116,17 @@ public class IndexController {
 		response.setViewName("signin");
 		return response;
 	}
-
-//	@RequestMapping(value = { "/signin" }, method = RequestMethod.POST)
-//	public ModelAndView signin(@Valid SignupForm form, BindingResult bindingResult) {
-//		ModelAndView response = new ModelAndView();
-//		log.debug("Signing in to user");
-//		String encodedPassword = passwordEncoder.encode(form.getPassword());
-//		Users user = new Users();
-//		user = usersDAO.findByUsername(form.getUsername());
-//		authService.changeLoggedInUsername(user.getUsername(), form.getPassword());
-//		response.setViewName("home");
-//
-//		return response;
-//	}
+	
+	@RequestMapping(value = {"/natparks"}, method = RequestMethod.GET)
+	public ModelAndView populateNatparks() {
+		log.debug("national parks page");
+		ModelAndView response = new ModelAndView();
+		
+		List<Map<String,Object>> nationalParks = natparkDAO.findAllParks();
+		response.setViewName("natparks");
+		response.addObject("nationalParks", nationalParks);
+		
+		return response;
+	}
+	
 }
