@@ -20,6 +20,8 @@ import com.capstone.nationalparkvisits.database.DAO.UserRolesDAO;
 import com.capstone.nationalparkvisits.database.DAO.UsersDAO;
 import com.capstone.nationalparkvisits.database.DAO.VisitsDAO;
 import com.capstone.nationalparkvisits.database.entities.Events;
+import com.capstone.nationalparkvisits.database.entities.Natpark;
+import com.capstone.nationalparkvisits.database.entities.Users;
 import com.capstone.nationalparkvisits.database.entities.Visits;
 import com.capstone.nationalparkvisits.security.AuthenticatedUserService;
 
@@ -77,7 +79,13 @@ public class EventController {
 		for (Events c: eventsResults) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("id", c.getId());
-			map.put("visitsId", c.getVisitsId());
+			Visits visit = visitsDAO.findById(c.getVisitsId());
+			Natpark park = natparkDAO.findById(visit.getNatparksId());
+			map.put("natpark", park.getName());
+			Users user = usersDAO.findById(visit.getUsersId());
+			map.put("user", user.getUsername());
+			map.put("start", visit.getStart());
+			map.put("end", visit.getEnd());
 			map.put("name", c.getName());
 			map.put("description", c.getDescription());
 			events.add(map);

@@ -19,6 +19,8 @@ import com.capstone.nationalparkvisits.database.DAO.NatparkDAO;
 import com.capstone.nationalparkvisits.database.DAO.UserRolesDAO;
 import com.capstone.nationalparkvisits.database.DAO.UsersDAO;
 import com.capstone.nationalparkvisits.database.DAO.VisitsDAO;
+import com.capstone.nationalparkvisits.database.entities.Natpark;
+import com.capstone.nationalparkvisits.database.entities.Users;
 import com.capstone.nationalparkvisits.database.entities.Visits;
 import com.capstone.nationalparkvisits.security.AuthenticatedUserService;
 
@@ -76,8 +78,10 @@ public class VisitController {
 		for (Visits c: visitsResults) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("id", c.getId());
-			map.put("natparksId", c.getNatparksId());
-			map.put("usersId", c.getUsersId());
+			Natpark park = natparkDAO.findById(c.getNatparksId());
+			map.put("natpark", park.getName());
+			Users user = usersDAO.findById(c.getUsersId());
+			map.put("user", user.getUsername());
 			map.put("end", c.getEnd());
 			map.put("start", c.getStart());
 			map.put("description", c.getDescription());
@@ -98,8 +102,10 @@ public class VisitController {
 		for (Visits c: visitsResults) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("id", c.getId());
-			map.put("natparksId", c.getNatparksId());
-			map.put("usersId", c.getUsersId());
+			Natpark park = natparkDAO.findById(c.getNatparksId());
+			map.put("natpark", park.getName());
+			Users user = usersDAO.findById(c.getUsersId());
+			map.put("user", user.getUsername());
 			map.put("end", c.getEnd());
 			map.put("start", c.getStart());
 			map.put("description", c.getDescription());

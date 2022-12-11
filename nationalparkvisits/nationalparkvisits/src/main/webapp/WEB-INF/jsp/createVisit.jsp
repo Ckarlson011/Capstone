@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row mt-3 mb-1">
-        <h2>Create User</h2>
+        <h2>Create Visit</h2>
     </div>
     <c:if test="${bindingResult.hasErrors()}">
         <c:forEach items="${bindingResult.getAllErrors()}" var="error">
@@ -81,7 +81,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="description" class="form-label">About You</label>
+            <label for="description" class="form-label">About The Visit</label>
             <textarea rows="5" cols="50" class="form-control" id="description" name="description"></textarea>
         </div>
         <div class="row">
