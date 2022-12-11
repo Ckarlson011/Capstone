@@ -10,7 +10,7 @@
     </tr>
     <c:forEach items="${nationalParks}" var="nationalParks">
         <tr>
-            <td>${nationalParks.name}</td>
+            <td><a href="/parkVisits?id="+${nationalParks.id}>${nationalParks.name}</a></td>
             <td>${nationalParks.state}</td>
             <td>${nationalParks.description}</td>
         </tr>

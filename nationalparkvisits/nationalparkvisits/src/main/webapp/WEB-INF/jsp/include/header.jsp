@@ -10,15 +10,11 @@
 	<body>
 		<nav class="navbar navbar-light bg-light">
 			<div class="row">
-			  <a href="index" class="col-1 navbar-brand">Home</a>
-			  <a href="signin" class="col-1 navbar-brand">Signin</a>
-			  <a href="signup" class="col-1 navbar-brand">Signup</a>
-			  <a href="myvisits" class="col-1 navbar-brand">My Visits</a>
-			  <a href="natparks" class="col-1 navbar-brand">National Parks</a>
-			  <a href="logout" class="col-1 navbar-brand">Logout</a>
-			  <div class="col-3 navbar-brand"></div>
-			  <div class="col-1 navbar-brand">
-				<!--TODO add in current username display here-->
-			  </div>
+			  <a href="index" class="col-2 navbar-brand">Home</a>
+			  <a href="signin" class="col-2 navbar-brand">Signin</a>
+			  <a href="signup" class="col-2 navbar-brand">Signup</a>
+			  <a href="myvisits" class="col-2 navbar-brand">My Visits</a>
+			  <a href="natparks" class="col-2 navbar-brand">National Parks</a>
+			  <a href="logout" class="col-2 navbar-brand">Logout</a>
 			</div>
 		</nav>

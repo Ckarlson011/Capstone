@@ -15,6 +15,6 @@ public interface NatparkDAO extends JpaRepository<Natpark, Long>{
 	public List<Natpark> findByName(String name);
 	public List<Natpark> findByState(String state);
 	
-	@Query(value = "select name, state, description from natparks", nativeQuery = true)
+	@Query(value = "select id, name, state, description from natparks", nativeQuery = true)
 	public List<Map<String,Object>> findAllParks();
 }
