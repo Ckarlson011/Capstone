@@ -70,7 +70,7 @@ public class EventController {
 		return response;
 	}
 	
-	@RequestMapping(value = {}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/events"}, method = RequestMethod.GET)
 	public ModelAndView eventPage(@RequestParam(required = true) Integer id) {
 		log.debug("This method creates the event page");
 		ModelAndView response = new ModelAndView();
