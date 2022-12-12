@@ -70,10 +70,10 @@ public class VisitController {
 	}
 	
 	@RequestMapping(value = { "/myVisits"}, method = RequestMethod.GET)
-	public ModelAndView myVisitsPage(@RequestParam(required = true) Integer id) {
+	public ModelAndView myVisitsPage() {
 		log.debug("this method creates the myVisits page");
 		ModelAndView response = new ModelAndView();
-		List<Visits> visitsResults = visitsDAO.findByUsersId(id);
+		List<Visits> visitsResults = visitsDAO.findByUsersId(authService.getCurrentUser().getId());
 		List<Map<String, Object>> visits = new ArrayList<Map<String, Object>>();
 		for (Visits c: visitsResults) {
 			Map<String, Object> map = new HashMap<String, Object>();

@@ -13,7 +13,7 @@
 			  <a href="index" class="col-2 navbar-brand">Home</a>
 			  <a href="signin" class="col-2 navbar-brand">Signin</a>
 			  <a href="signup" class="col-2 navbar-brand">Signup</a>
-			  <a href="myvisits" class="col-2 navbar-brand">My Visits</a>
+			  <a href="myVisits" class="col-2 navbar-brand">My Visits</a>
 			  <a href="natparks" class="col-2 navbar-brand">National Parks</a>
 			  <a href="logout" class="col-2 navbar-brand">Logout</a>
 			</div>

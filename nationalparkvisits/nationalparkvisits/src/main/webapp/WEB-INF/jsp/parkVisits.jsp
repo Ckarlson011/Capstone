@@ -18,9 +18,11 @@
             <td>${visits.description}</td>
             <td>${visits.start}</td>
             <td>${visits.end}</td>
-            <td><a href="/parkVisits?id="+${visits.id}>link</a></td>
+            <td><a href="/events?id=${visits.id}">link</a></td>
         </tr>
     </c:forEach>
 </table>
+
+<a href="/createVisit" class = "btn btn-primary">New Visit</a>
 
 <jsp:include page="include/footer.jsp" />

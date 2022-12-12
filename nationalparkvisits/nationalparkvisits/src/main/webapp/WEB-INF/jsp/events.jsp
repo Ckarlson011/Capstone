@@ -23,4 +23,6 @@
     </c:forEach>
 </table>
 
+<a href="/createEvent?visit_id=${param.id}" class="btn btn-primary">New Event</a>
+
 <jsp:include page="include/footer.jsp" />
