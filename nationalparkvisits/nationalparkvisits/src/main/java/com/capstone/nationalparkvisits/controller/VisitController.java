@@ -1,14 +1,20 @@
 package com.capstone.nationalparkvisits.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +28,8 @@ import com.capstone.nationalparkvisits.database.DAO.VisitsDAO;
 import com.capstone.nationalparkvisits.database.entities.Natpark;
 import com.capstone.nationalparkvisits.database.entities.Users;
 import com.capstone.nationalparkvisits.database.entities.Visits;
+import com.capstone.nationalparkvisits.form.NewVisitForm;
+import com.capstone.nationalparkvisits.form.SignupForm;
 import com.capstone.nationalparkvisits.security.AuthenticatedUserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -61,11 +69,27 @@ public class VisitController {
 	}
 
 	@RequestMapping(value = { "/createVisit" }, method = RequestMethod.POST)
-	public ModelAndView createVisitPost() {
+	public ModelAndView createVisitPost(@Valid NewVisitForm form, BindingResult bindingResult) throws ParseException {
 		log.debug("this method submits the visit form to the database");
 		ModelAndView response = new ModelAndView();
-		// TODO create method
-		
+		response.setViewName("createVisit");
+		for (ObjectError e : bindingResult.getAllErrors()) {
+			log.debug(e.getObjectName() + " : " + e.getDefaultMessage());
+		}
+		if (!bindingResult.hasErrors()) {
+			log.debug(form.getEnd());
+			log.debug(form.getStart());
+			Visits visit = new Visits();
+			visit.setDescription(form.getDescription());
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			visit.setEnd(format.parse(form.getEnd()));
+			visit.setNatparksId(form.getPark());
+			visit.setStart(format.parse(form.getStart()));
+			visit.setUsersId(authService.getCurrentUser().getId());
+			visitsDAO.save(visit);
+			response.setViewName("index");
+
+		}
 		return response;
 	}
 	

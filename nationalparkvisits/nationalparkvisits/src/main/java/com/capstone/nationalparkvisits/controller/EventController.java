@@ -5,10 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +27,8 @@ import com.capstone.nationalparkvisits.database.entities.Events;
 import com.capstone.nationalparkvisits.database.entities.Natpark;
 import com.capstone.nationalparkvisits.database.entities.Users;
 import com.capstone.nationalparkvisits.database.entities.Visits;
+import com.capstone.nationalparkvisits.form.NewEventForm;
+import com.capstone.nationalparkvisits.form.SignupForm;
 import com.capstone.nationalparkvisits.security.AuthenticatedUserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -62,11 +68,21 @@ public class EventController {
 	}
 
 	@RequestMapping(value = { "/createEvent" }, method = RequestMethod.POST)
-	public ModelAndView createEventPost() {
+	public ModelAndView createEventPost(@Valid NewEventForm form, BindingResult bindingResult) {
 		log.debug("This method submits the event form to the database");
 		ModelAndView response = new ModelAndView();
-		// TODO create method
-		
+		response.setViewName("createEvent");
+		for (ObjectError e : bindingResult.getAllErrors()) {
+			log.debug(e.getObjectName() + " : " + e.getDefaultMessage());
+		}
+		if (!bindingResult.hasErrors()) {
+			Events event = new Events();
+			event.setDescription(form.getDescription());
+			event.setName(form.getName());
+			event.setVisitsId(form.getVisitId());
+			eventsDAO.save(event);
+			response.setViewName("index");
+		}
 		return response;
 	}
 	
@@ -91,7 +107,7 @@ public class EventController {
 			events.add(map);
 		}
 		response.setViewName("events");
-		response.addObject("events", events);		
+		response.addObject("events", events);
 		return response;
 	}
 }

@@ -11,7 +11,7 @@
             <p class="mb-0" style="color:red">${error.getDefaultMessage()}</p>
         </c:forEach>
     </c:if>
-    <form action="/user/createuser" method="POST">
+    <form action="/createVisit" method="POST">
         <div class="mb-3">
             <label for="park" class="form-label">Choose the park</label>
             <select id="park" name="park">

@@ -80,11 +80,12 @@ public class UserAndLoginController {
 			}
 			usersDAO.save(user);
 			UserRoles ur = new UserRoles();
-			ur.setRoleName("USER");
+			ur.setRoleName("ADMIN");
 			ur.setUserId(user.getId());
 			userRolesDAO.save(ur);
 
 			authService.changeLoggedInUsername(user.getUsername(), form.getPassword());
+			response.setViewName("myVisits");
 		} else {
 			response.addObject("bindingResult", bindingResult);
 			response.addObject("form", form);

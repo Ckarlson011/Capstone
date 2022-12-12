@@ -14,7 +14,7 @@
     </c:if>
     visit_id is ${param.visit_id}
     <form action="/createEvent" method="POST">
-        <input type="hidden" name="visitId" value="${param.visit_id}"><!--TODO-->
+        <input type="hidden" name="visitId" id = "visitId" value="${param.visit_id}">
 		<div class="mb-3">
             <label for="name" class="form-label">Name of the event</label>
             <input type="text" value="${form.name}" name="name" class="form-control" id="name">
