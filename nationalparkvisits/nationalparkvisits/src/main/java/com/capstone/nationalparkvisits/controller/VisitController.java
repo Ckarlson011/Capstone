@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -68,6 +69,7 @@ public class VisitController {
 		return response;
 	}
 
+	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(value = { "/createVisit" }, method = RequestMethod.POST)
 	public ModelAndView createVisitPost(@Valid NewVisitForm form, BindingResult bindingResult) throws ParseException {
 		log.debug("this method submits the visit form to the database");
