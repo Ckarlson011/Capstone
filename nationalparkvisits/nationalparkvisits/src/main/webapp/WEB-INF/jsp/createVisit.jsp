@@ -90,7 +90,7 @@
                 <input type="date" id="start" name="start">
             </div>
             <div class="mb-3 col-6">
-                <label for="end">Start date:</label>
+                <label for="end">End date:</label>
                 <input type="date" id="end" name="end">
             </div>
         </div>

@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="include/header.jsp" />
-
+<sec:authorize access="isAnyAuthority()">
 <table class="table table-bordered">
     <tr>
         <th>NAME</th>
@@ -16,5 +16,6 @@
         </tr>
       </c:forEach>
 </table>
+</sec:authorize>
 
 <jsp:include page="include/footer.jsp" />

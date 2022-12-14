@@ -2,9 +2,8 @@ package com.capstone.nationalparkvisits.database.DAO;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.capstone.nationalparkvisits.database.entities.Visits;
@@ -12,6 +11,8 @@ import com.capstone.nationalparkvisits.database.entities.Visits;
 @Repository
 public interface VisitsDAO extends JpaRepository<Visits, Long>{
 	public Visits findById(Integer id);
+	
+	@Query ("SELECT n FROM Natpark n WHERE id = :natparksId")
 	public List<Visits> findByNatparksId(Integer natparksId);
 	public List<Visits> findByUsersId(Integer usersId);
 	public List<Visits> findByStart(Date start);
