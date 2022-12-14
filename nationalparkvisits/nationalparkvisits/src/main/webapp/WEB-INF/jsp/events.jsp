@@ -10,6 +10,7 @@
         <th>Description</th>
         <th>Start</th>
         <th>End</th>
+        <th>Edit Event</th>
     </tr>
     <c:forEach items="${events}" var="events">
         <tr>
@@ -19,6 +20,7 @@
             <td>${events.description}</td>
             <td>${events.start}</td>
             <td>${events.end}</td>
+            <td><a href="/editEvent/?id=${events.id}">Edit</a></td>
         </tr>
     </c:forEach>
 </table>

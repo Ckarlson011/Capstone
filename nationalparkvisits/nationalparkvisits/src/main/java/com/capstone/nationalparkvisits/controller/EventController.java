@@ -110,4 +110,32 @@ public class EventController {
 		response.addObject("events", events);
 		return response;
 	}
+
+	@RequestMapping(value= {"/editEvent"}, method = RequestMethod.GET)
+	public ModelAndView editEventPage(@RequestParam(required = true) Integer id) {
+		log.debug("This method creates the edit event page");
+		ModelAndView response = new ModelAndView();
+		response.setViewName("editEvent");
+		Events event = eventsDAO.findById(id);
+		response.addObject("event", event);
+		return response;
+	}
+	
+	@RequestMapping(value= {"/editEvent"}, method = RequestMethod.POST)
+	public ModelAndView editEventPagePost(@Valid NewEventForm form, BindingResult bindingResult) {
+		ModelAndView response = new ModelAndView();
+		log.debug("This method updeates event");
+		response.setViewName("index");
+		for (ObjectError e : bindingResult.getAllErrors()) {
+			log.debug(e.getObjectName() + " : " + e.getDefaultMessage());
+		}
+		if (!bindingResult.hasErrors()) {
+			Events event = eventsDAO.findById(form.getId());
+			event.setDescription(form.getDescription());
+			event.setName(form.getName());
+			eventsDAO.save(event);
+		}
+		return response;
+	}
+	
 }

@@ -22,7 +22,7 @@ public class SecurityConfig {
 			.csrf().disable()
 	        .authorizeRequests()
 	        	// this line of code specifies all URLs that do not need authentication to view
-	        	.antMatchers("/", "/index", "/signup/**", "admin/admin", "/admin/admintest", "/signin", "/signinpost", "/logout").permitAll()
+	        	.antMatchers("/", "/index", "/signup/**", "admin/admin", "/admin/admintest", "/signin", "/signinpost", "/logout", "/pub/**").permitAll()
 	        	// this line of code tells spring security that all URLs can only be accessed if the user
 	        	// is authenticated.   This is authetnication only and does not care about authorization.
 	        	// authorization must be implement in the controller to limit by user role
