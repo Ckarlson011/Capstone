@@ -69,7 +69,6 @@ public class VisitController {
 		return response;
 	}
 
-	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(value = { "/createVisit" }, method = RequestMethod.POST)
 	public ModelAndView createVisitPost(@Valid NewVisitForm form, BindingResult bindingResult) throws ParseException {
 		log.debug("this method submits the visit form to the database");
@@ -113,7 +112,7 @@ public class VisitController {
 			map.put("description", c.getDescription());
 			visits.add(map);
 		}
-		response.setViewName("parkVisits");
+		response.setViewName("myVisits");
 		response.addObject("visits", visits);
 		
 		return response;

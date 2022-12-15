@@ -11,8 +11,6 @@ import com.capstone.nationalparkvisits.database.entities.Visits;
 @Repository
 public interface VisitsDAO extends JpaRepository<Visits, Long>{
 	public Visits findById(Integer id);
-	
-	@Query ("SELECT n FROM Natpark n WHERE id = :natparksId")
 	public List<Visits> findByNatparksId(Integer natparksId);
 	public List<Visits> findByUsersId(Integer usersId);
 	public List<Visits> findByStart(Date start);

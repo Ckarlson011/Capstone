@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="include/header.jsp" />
-
+<div class="container mt-3">
 <table class="table table-bordered">
     <tr>
         <th>Park</th>
@@ -26,5 +26,5 @@
 </table>
 
 <a href="/createEvent?visit_id=${param.id}" class="btn btn-primary">New Event</a>
-
+</div>
 <jsp:include page="include/footer.jsp" />

@@ -11,7 +11,7 @@
             <p class="mb-0" style="color:red">${error.getDefaultMessage()}</p>
         </c:forEach>
     </c:if>
-	<form action="/signup/createuser" method="POST">
+	<form action="/signup" method="POST">
 		<div class="row">
 			<div class="mb-3 col-6">
                 <label for="firstName" class="form-label">First Name</label>
@@ -49,6 +49,10 @@
         <div class="mb-3">
             <label for="description" class="form-label">About You</label>
             <textarea rows="5" cols="50" class="form-control" id="description" name="description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="subscribe" class="form-label">Subscribe to updates</label>
+            <input type="checkbox" class="form-check-input" id="subscribe" name="subscribe" value="subscribe" checked="true">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
 	

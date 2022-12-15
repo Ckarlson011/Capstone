@@ -2,9 +2,10 @@
 
 <jsp:include page="include/header.jsp" />
 
-<div class="row g-0 d-flex align-items-center">
+<div class="container g-0 d-flex align-items-center">
     <div class="col-6">
       <div class="card-body py-5 px-md-5">
+        <h2>Sign In</h2>
 
         <form action="/signinpost" method="POST">
           <!-- username input -->

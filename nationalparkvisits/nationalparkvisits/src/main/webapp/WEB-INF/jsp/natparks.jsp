@@ -2,6 +2,7 @@
 
 <jsp:include page="include/header.jsp" />
 <sec:authorize access="isAnyAuthority()">
+<div class="container mt-3">
 <table class="table table-bordered">
     <tr>
         <th>NAME</th>
@@ -14,8 +15,9 @@
             <td>${nationalParks.state}</td>
             <td>${nationalParks.description}</td>
         </tr>
-      </c:forEach>
+    </c:forEach>
 </table>
+</div>
 </sec:authorize>
 
 <jsp:include page="include/footer.jsp" />

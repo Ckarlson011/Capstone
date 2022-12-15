@@ -57,7 +57,7 @@ public class UserAndLoginController {
 		return response;
 	}
 
-	@RequestMapping(value = { "/signup/createuser" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/signup" }, method = RequestMethod.POST)
 	public ModelAndView signupCreateUser(@Valid SignupForm form, BindingResult bindingResult) {
 		ModelAndView response = new ModelAndView();
 		response.setViewName("signup");
@@ -85,7 +85,7 @@ public class UserAndLoginController {
 			userRolesDAO.save(ur);
 
 			authService.changeLoggedInUsername(user.getUsername(), form.getPassword());
-			response.setViewName("myVisits");
+			response.setViewName("index");
 		} else {
 			response.addObject("bindingResult", bindingResult);
 			response.addObject("form", form);

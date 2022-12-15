@@ -8,7 +8,7 @@
 			<meta charset="UTF-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<link href="pub/style.css" rel="stylesheet">
+			<link href="../pub/style.css" rel="stylesheet">
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 				integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 				crossorigin="anonymous">
@@ -19,17 +19,17 @@
 
 		<body>
 			<nav class="navbar" style="background-color: green">
-				<div class="row">
-					<a href="index" class="col-2 navbar-brand" style="color:black" id="a1">Home</a>
-					<a href="signin" class="col-2 navbar-brand" style="color:black" id="a2">Signin</a>
-					<a href="signup" class="col-2 navbar-brand" style="color:black" id="a3">Signup</a>
+				<div class="container">
+					<a href="index" class="col-1 navbar-brand text-center" style="color:black" id="a1">Home</a>
+					<a href="signin" class="col-1 navbar-brand text-center" style="color:black" id="a2">Signin</a>
+					<a href="signup" class="col-1 navbar-brand text-center" style="color:black" id="a3">Signup</a>
 					<sec:authorize access="isAuthenticated()">
-						<a href="myVisits" class="col-2 navbar-brand" style="color:black" id="a4">My Visits</a>
-						<a href="natparks" class="col-2 navbar-brand" style="color:black" id="a5">National Parks</a>
-						<a href="logout" class="col-2 navbar-brand" style="color:black" id="a6">Logout</a>
+						<a href="myVisits" class="col-1 navbar-brand text-center" style="color:black" id="a4">My Visits</a>
+						<a href="natparks" class="col-2 navbar-brand text-center" style="color:black" id="a5">National Parks</a>
+						<a href="logout" class="col-1 navbar-brand text-center" style="color:black" id="a6">Logout</a>
 					</sec:authorize>
 					<sec:authorize access="!isAuthenticated()">
-						<div style="color:black">Please log in or create user</diV>
+						<div class="text-center"style="color:black">Please log in or create user</diV>
 					</sec:authorize>
 				</div>
 			</nav>
