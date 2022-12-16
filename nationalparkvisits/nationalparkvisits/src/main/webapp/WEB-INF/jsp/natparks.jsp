@@ -5,7 +5,7 @@
 <div class="container mt-3">
     <h2 class="m-3 col-12 text-center">National Parks</h2>
     <img src="../../pub/IMG_1745.jpg" alt="Mountain against background of night scky with stars" style="max-width: 100%;height: auto;" class="col-12 mb-3">
-<table class="table table-bordered">
+<table class="table table-bordered" style="background-color:antiquewhite">
     <tr>
         <th>NAME</th>
         <th>State</th>
