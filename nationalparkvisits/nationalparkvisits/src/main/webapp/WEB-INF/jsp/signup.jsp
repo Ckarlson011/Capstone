@@ -37,7 +37,7 @@
         </div>
 		<div class="row">
             <div class="mb-3 col-6">
-                <label for="exampleInputPassword1" class="form-label">Password<div> must include 8 characters, can only include uppercase, lowercase, numbers, and !@#</div></label>
+                <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input type="password" value="${form.password}" name="password" class="form-control" id="exampleInputPassword1">
             </div>
 

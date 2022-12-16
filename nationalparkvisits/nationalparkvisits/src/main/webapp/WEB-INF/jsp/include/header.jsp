@@ -17,7 +17,7 @@
 				crossorigin="anonymous"></script>
 		</head>
 
-		<body style="background-color:burlywood">
+		<body style="background-color:antiquewhite">
 			<nav class="navbar" style="background-color: green">
 				<div class="container">
 					<a href="index" class="col-1 navbar-brand text-center" style="color:black" id="a1">Home</a>

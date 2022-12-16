@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="col-6">
-      <img src="../../pub/IMG_1704.jpg" alt="Mountain against background of night scky with stars" style="max-width: 100%;height: auto;">
+      <img src="../../pub/IMG_1704.jpg" alt="Mountain against background of night scky with stars" style="max-width: 100%;height: auto;" class="border border-white">
     </div>
 </div>
 
